@@ -20,3 +20,6 @@ describe "Can use environment variables as a settings list" do
 
   # Can't use metaclass because class < Object which has lots of methods defined. BasicObject is what we want.
 end
+
+describe "Can use a file on disk"
+describe "Can use a chain of sources, for example ENV falling back to file on disk"
