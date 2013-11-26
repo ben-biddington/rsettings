@@ -6,12 +6,7 @@ describe "Can use environment variables as a settings list" do
     expect(Settings.new.xxx).to eql "bangerman"
   end
 
-  it "another example" do
-    ENV["timeout"] = "30"
-    expect(Settings.new.timeout).to eql "30"
-  end
-
-  it "name may be used" do
+  it "name may be used (name is interesting because it is implemented on Object)" do
     ENV["name"] = "bangerman"
     expect(Settings.new.name).to eql "bangerman"
   end
