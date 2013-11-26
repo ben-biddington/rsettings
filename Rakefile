@@ -24,8 +24,12 @@ Jeweler::Tasks.new do |gem|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
+require "rake/testtask"
+
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib'
   test.pattern = 'spec/**/_spec*.rb'
   test.verbose = true
 end
+
+task :default => :test
