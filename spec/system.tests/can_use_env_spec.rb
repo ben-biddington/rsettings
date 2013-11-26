@@ -17,6 +17,7 @@ describe "Can use environment variables as a settings list" do
   end
 
   it "does type matter? Ought I be able to expect numbers for example. Currently all are strings."
+  it "can supply mappings somehow, so you can have shorter ENV names for example. Translate ENV['n'] => 'name'"
 
   # Can't use metaclass because class < Object which has lots of methods defined. BasicObject is what we want.
 end
