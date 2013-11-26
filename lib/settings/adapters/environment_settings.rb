@@ -1,5 +1,7 @@
 class EnvironmentSettings
   class << self
-    def name; ENV["name"]; end
+    def method_missing(name, *args)
+      ENV[name.to_s]
+    end
   end
 end

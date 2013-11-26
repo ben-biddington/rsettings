@@ -4,7 +4,9 @@ Dir.glob(File.join(dir, "settings", "**", "*.rb")).each {|f| require f}
 
 class Settings
   class << self
-    require "forwardable"; extend Forwardable
-    delegate :name => EnvironmentSettings
+    def method_missing(name, *args)
+      fail "Only support queries" unless args.empty?
+      EnvironmentSettings.send name.to_sym
+    end
   end
 end
