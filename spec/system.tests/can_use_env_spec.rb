@@ -44,15 +44,15 @@ describe "Can use environment variables as a settings list" do
   end
 
   it "you can map none" do
-    settings_configured_with_username_mapping_only = Settings.new do
+    settings_configured_with_nothing = Settings.new do
       
     end
 
     ENV["U"] = "graeme.hay"
     ENV["P"] = "allblacks"
     
-    expect(settings_configured_with_username_mapping_only.U).to eql "graeme.hay"
-    expect(settings_configured_with_username_mapping_only.P).to eql "allblacks"
+    expect(settings_configured_with_nothing.U).to eql "graeme.hay"
+    expect(settings_configured_with_nothing.P).to eql "allblacks"
   end
 
   it "You can have a setting called :new and/or :initialize" do
@@ -72,6 +72,8 @@ describe "Can use environment variables as a settings list" do
     
     expect(settings.configure).to eql "xxx_conf_xxx"
   end
+
+  it "I wonder if ignoring missing settings would be nice -- at least allow me the option"
 
   # Can't use metaclass because class < Object which has lots of methods defined. BasicObject is what we want.
 end
