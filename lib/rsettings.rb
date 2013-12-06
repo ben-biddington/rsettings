@@ -16,7 +16,7 @@ class Settings
 
   def method_missing(m, *args)
     fail "Only support queries, cannot do <#{m}>" unless args.empty?
-    
+
     setting_name = @config.name_for m
     
     EnvironmentSettings.new.get setting_name
