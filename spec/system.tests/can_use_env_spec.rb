@@ -47,9 +47,12 @@ describe "Can use environment variables as a settings list" do
     expect(settings_configured_with_username_mapping_only.P).to eql "allblacks"
   end
 
+  it "fails if you try and configure without a block" do
+    expect{Settings.new.configure}.to raise_error /You have to supply a block/
+  end
+
   it "make sure you can use setting name 'configure'"
   it "what about a setting caled initialize?"
-  it "fails if you try and configure without a block"
 
   # Can't use metaclass because class < Object which has lots of methods defined. BasicObject is what we want.
 end

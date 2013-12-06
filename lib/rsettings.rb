@@ -9,6 +9,7 @@ class Settings
 
   def configure(&block)
     @config = SettingsConfiguration.new.tap do |conf|
+      fail "You have to supply a block" unless block_given?
       conf.instance_exec &block if block_given?
     end
   end
