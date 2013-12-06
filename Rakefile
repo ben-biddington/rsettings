@@ -13,23 +13,22 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  gem.name = "settings"
-  gem.homepage = "http://github.com/ben-biddington/settings"
+  gem.name = "rsettings"
+  gem.homepage = "http://github.com/ben-biddington/rsettings"
   gem.license = "MIT"
-  gem.summary = %Q{Settings}
+  gem.summary = %Q{Settings for ruby programs}
   gem.description = %Q{Settings}
   gem.email = "ben.biddington@gmail.com"
   gem.authors = ["Ben Biddington"]
-  # dependencies defined in Gemfile
 end
+
 Jeweler::RubygemsDotOrgTasks.new
 
-require "rake/testtask"
+require 'rspec/core/rake_task'
 
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib'
-  test.pattern = 'spec/**/_spec.rb'
-  test.verbose = true
+desc "Run all the tests"
+RSpec::Core::RakeTask.new(:test) do |t|
+  t.pattern = "spec/**/_spec.rb"
 end
 
 task :default => :test

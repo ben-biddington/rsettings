@@ -1,6 +1,6 @@
 dir = File.join(File.dirname(__FILE__))
 
-Dir.glob(File.join(dir, "settings", "**", "*.rb")).each {|f| require f}
+Dir.glob(File.join(dir, "rsettings", "**", "*.rb")).each {|f| require f}
 
 class Settings
   def method_missing(m, *args)
