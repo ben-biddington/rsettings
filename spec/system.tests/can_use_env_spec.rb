@@ -33,7 +33,20 @@ describe "Can use environment variables as a settings list" do
     expect(settings.password).to eql "allblacks"
   end
 
-  it "when you have mappings it still finds unmapped ones"
+  it "you can map some and not others" do
+    settings_configured_with_username_mapping_only = Settings.new
+
+    settings_configured_with_username_mapping_only.configure do
+      let "U" => :username
+    end
+
+    ENV["U"] = "graeme.hay"
+    ENV["P"] = "allblacks"
+    
+    expect(settings_configured_with_username_mapping_only.username).to eql "graeme.hay"
+    expect(settings_configured_with_username_mapping_only.P).to eql "allblacks"
+  end
+
   it "make sure you can use setting name 'configure'"
   it "what about a setting caled initialize?"
   it "fails if you try and configure without a block"
