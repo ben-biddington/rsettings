@@ -17,7 +17,24 @@ describe "Can use environment variables as a settings list" do
   end
 
   it "does type matter? Ought I be able to expect numbers for example. Currently all are strings."
-  it "can supply mappings somehow, so you can have shorter ENV names for example. Translate ENV['n'] => 'name'"
+  
+  it "can supply mappings somehow" do
+    settings = Settings.new
+
+    settings.configure do
+      let "U" => :username
+      let "P" => :password
+    end
+
+    ENV["U"] = "graeme.hay"
+    ENV["P"] = "allblacks"
+    
+    expect(settings.username).to eql "graeme.hay"
+    expect(settings.password).to eql "allblacks"
+  end
+
+  it "make sure you can use setting name 'configure'"
+  it "fails if you try and configure without a block"
 
   # Can't use metaclass because class < Object which has lots of methods defined. BasicObject is what we want.
 end
