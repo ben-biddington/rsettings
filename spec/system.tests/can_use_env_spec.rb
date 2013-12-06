@@ -43,6 +43,18 @@ describe "Can use environment variables as a settings list" do
     expect(settings_configured_with_username_mapping_only.P).to eql "allblacks"
   end
 
+  it "you can map none" do
+    settings_configured_with_username_mapping_only = Settings.new do
+      
+    end
+
+    ENV["U"] = "graeme.hay"
+    ENV["P"] = "allblacks"
+    
+    expect(settings_configured_with_username_mapping_only.U).to eql "graeme.hay"
+    expect(settings_configured_with_username_mapping_only.P).to eql "allblacks"
+  end
+
   it "You can have a setting called :new and/or :initialize" do
     settings = Settings.new
     
