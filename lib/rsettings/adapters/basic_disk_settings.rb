@@ -28,6 +28,8 @@ class BasicDiskSettings
     end
   end
 
+  def file; @file; end
+
   private
 
   def notify_missing(name)
@@ -37,6 +39,4 @@ class BasicDiskSettings
   def _ensure
     touch file
   end
-
-  def file; @file; end
 end
