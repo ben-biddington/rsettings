@@ -21,6 +21,16 @@ class Settings
   def method_missing(m, *args, &block)
     fail "Only support queries, cannot do <#{m}>" unless args.empty?
 
+    Xxx.new(@settings, @config).get m
+  end
+end
+
+class Xxx
+  def initialize(settings, config)
+    @settings,@config = settings,config
+  end
+
+  def get(m)
     query = m.to_s.end_with? "?"
 
     m = m.to_s.delete "?" if query
@@ -37,6 +47,6 @@ class Settings
       return value.to_s.downcase === "yes"
     end
 
-    @settings.get(setting_name)
+    @settings.get(setting_name)    
   end
 end
