@@ -15,7 +15,7 @@ class BasicDiskSettings
   def set(opts ={})
     require "yaml"
 
-    File.open @file, "w+" do |io|
+    File.open file, "w+" do |io|
       io.puts opts.to_yaml
     end 
   end
