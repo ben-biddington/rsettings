@@ -1,6 +1,10 @@
 class RSettings
   def initialize(settings, config)
     @settings,@config = settings,config
+    
+    @settings.on :missing do |e,args|
+      @config.missing.on_missing args.first
+    end
   end
 
   def find(m)

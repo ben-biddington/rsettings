@@ -12,10 +12,6 @@ class Settings
         conf.instance_exec &block
       end
     end
-
-    @settings.on :missing do |e,args|
-      @config.missing.on_missing args.first
-    end
   end
 
   def method_missing(m, *args, &block)
