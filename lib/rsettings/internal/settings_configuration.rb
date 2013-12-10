@@ -19,7 +19,11 @@ class SettingsConfiguration
   end
 
   def with_settings(opts={})
-    @settings = SettingsChain.new(opts[:chain]) if opts[:chain]
+    if opts.is_a? Hash
+      @settings = SettingsChain.new(opts[:chain]) if opts[:chain]
+    else
+      @settings = opts.new
+    end
   end
 
   private

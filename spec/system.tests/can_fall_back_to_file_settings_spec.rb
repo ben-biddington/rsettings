@@ -39,4 +39,17 @@ describe "a settings fallback" do
     expect(settings.a).to eql "disk a"
     expect(settings.b).to eql "env b"
   end
+
+  it "you can use ONLY disk if you like" do
+    settings = Settings.new do
+      with_settings BasicDiskSettings
+    end
+
+    ENV["ben_rules"] = "expect this to be ignored"
+
+    disk_settings.clear
+    disk_settings.set :ben_rules => "yes"
+
+    expect(settings.ben_rules).to eql "yes"
+  end
 end

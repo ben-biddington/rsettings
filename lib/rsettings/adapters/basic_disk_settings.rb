@@ -23,10 +23,16 @@ class BasicDiskSettings
   def get(name)
     require "yaml"
     opts = YAML.load(IO.read(@file))
-    opts[name]
+    opts[name].tap do |result|
+      notify_missing name unless result
+    end
   end
 
   private
+
+  def notify_missing(name)
+    notify :missing, name
+  end
 
   def _ensure
     touch file
