@@ -21,11 +21,11 @@ class Settings
   def method_missing(m, *args, &block)
     fail "Only support queries, cannot do <#{m}>" unless args.empty?
 
-    Xxx.new(@settings, @config).find m
+    RSettings.new(@settings, @config).find m
   end
 end
 
-class Xxx
+class RSettings
   def initialize(settings, config)
     @settings,@config = settings,config
   end
