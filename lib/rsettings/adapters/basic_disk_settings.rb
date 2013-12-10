@@ -1,6 +1,7 @@
 class BasicDiskSettings
   require "fileutils"; include FileUtils
   require "audible"; include Audible
+  require "yaml"
 
   def initialize(&block)
     @file = ".rsettings"
@@ -9,32 +10,40 @@ class BasicDiskSettings
   end
 
   def clear
-    rm file
+    rm file if exists?
   end
 
   def set(opts ={})
-    require "yaml"
+    opts = all.merge opts
 
     File.open file, "w+" do |io|
       io.puts opts.to_yaml
     end 
+
+    notify :set, @settings
   end
 
   def get(name)
-    require "yaml"
-    opts = YAML.load(IO.read(@file))
-    opts[name].tap do |result|
-      notify_missing name unless result
-    end
+    settings[name].tap{|result| notify_missing name unless result}
   end
 
   def file; @file; end
 
   private
 
+  def settings; @settings ||= all; end
+
+  def all
+    return {} unless exists?
+
+    YAML.load(IO.read(file))
+  end
+
   def notify_missing(name)
     notify :missing, name
   end
+
+  def exists?; File.exists? file; end
 
   def _ensure
     touch file

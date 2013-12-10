@@ -48,6 +48,7 @@ describe "a settings fallback" do
     ENV["ben_rules"] = "expect this to be ignored"
 
     disk_settings.clear
+    disk_settings.on(:set){|e,args| puts args.first}
     disk_settings.set :ben_rules => "yes"
 
     expect(settings.ben_rules).to eql "yes"
