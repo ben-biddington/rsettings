@@ -1,8 +1,9 @@
 class SettingsConfiguration
-  attr_reader :missing
+  attr_reader :missing, :settings
 
   def initialize
     @missing = FailOnMissing.new
+    @settings = EnvironmentSettings.new
   end
 
   def let(opts = {})
@@ -15,6 +16,10 @@ class SettingsConfiguration
 
   def name_for(setting)
     _opts[setting] || setting
+  end
+
+  def with_settings(opts={})
+    @settings = SettingsChain.new(opts[:chain]) if opts[:chain]
   end
 
   private
