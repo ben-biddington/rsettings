@@ -21,7 +21,7 @@ class Settings
   def method_missing(m, *args, &block)
     fail "Only support queries, cannot do <#{m}>" unless args.empty?
 
-    Xxx.new(@settings, @config).get m
+    Xxx.new(@settings, @config).find m
   end
 end
 
@@ -30,7 +30,7 @@ class Xxx
     @settings,@config = settings,config
   end
 
-  def get(m)
+  def find(m)
     query = m.to_s.end_with? "?"
 
     m = m.to_s.delete "?" if query
