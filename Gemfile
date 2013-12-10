@@ -1,8 +1,9 @@
 source "https://rubygems.org"
 
-gem "rake"
+gem "audible"
 
 group :development do
+  gem "rake"
   gem "rspec"
   gem "bundler"
   gem "jeweler", "~> 1.8.4"
