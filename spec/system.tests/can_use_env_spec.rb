@@ -15,8 +15,6 @@ describe "Can use environment variables as a settings list" do
     ENV.clear
     expect{Settings.new.name}.to raise_error /Setting <name> not found/
   end
-
-  it "does type matter? Ought I be able to expect numbers for example. Currently all are strings."
   
   it "can supply mappings" do
     settings = Settings.new do 
@@ -72,11 +70,5 @@ describe "Can use environment variables as a settings list" do
     
     expect(settings.configure).to eql "xxx_conf_xxx"
   end
-
-  it "I wonder if ignoring missing settings would be nice -- at least allow me the option"
-
   # Can't use metaclass because class < Object which has lots of methods defined. BasicObject is what we want.
 end
-
-describe "Can use a file on disk"
-describe "Can use a chain of sources, for example ENV falling back to file on disk"
