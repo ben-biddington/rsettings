@@ -11,15 +11,11 @@ class Settings
         conf.instance_exec &block
       end
     end
-
-    @settings = @config.settings
-
-    fail "Error" unless @config.settings
   end
 
   def method_missing(m, *args, &block)
     fail "Only support queries, cannot do <#{m}>" unless args.empty?
 
-    RSettings.new(@settings, @config).find m
+    RSettings.new(@config).find m
   end
 end
