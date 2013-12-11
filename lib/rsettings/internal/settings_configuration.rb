@@ -1,21 +1,18 @@
 class SettingsConfiguration
-  attr_reader :missing, :settings
+  attr_reader :missing, :settings, :names
 
   def initialize
     @missing = FailOnMissing.new
     @settings = EnvironmentSettings.new
+    @names = Names.new
   end
 
   def let(opts = {})
-    _opts.merge! opts.invert
+    @names.add opts
   end
 
   def when_missing(type)
     @missing = IgnoreMissing.new if type === :ignore 
-  end
-
-  def name_for(setting)
-    _opts[setting] || setting
   end
 
   def with_settings(opts={})
@@ -25,10 +22,6 @@ class SettingsConfiguration
       @settings = opts.new
     end
   end
-
-  private
-
-  def _opts; @opts ||= {}; end
 end
 
 class IgnoreMissing

@@ -1,9 +1,9 @@
 class RSettings
   def initialize(config)
-    @settings,@config = config.settings,config
+    @settings,@missing,@names = config.settings,config.missing,config.names
     
     @settings.on :missing do |e,args|
-      @config.missing.on_missing args.first
+      @missing.on_missing args.first
     end
   end
 
@@ -12,10 +12,10 @@ class RSettings
 
     m = m.to_s.delete "?" if query
 
-    setting_name = @config.name_for(m)
+    setting_name = @names.for(m)
     
     if query
-      setting_name = @config.name_for(m)
+      setting_name = @names.for(m)
 
       value = Setting.new @settings.get(setting_name)
       
