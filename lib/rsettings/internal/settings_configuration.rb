@@ -1,10 +1,11 @@
 class SettingsConfiguration
   attr_reader :missing, :settings, :names
 
-  def initialize
+  def initialize(&block)
     @missing = FailOnMissing.new
     @settings = EnvironmentSettings.new
     @names = Names.new
+    instance_exec &block if block_given?
   end
 
   def let(opts = {})

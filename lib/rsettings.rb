@@ -4,13 +4,7 @@ Dir.glob(File.join(dir, "rsettings", "**", "*.rb")).each {|f| require f}
 
 class Settings
   def initialize(&block)
-    @config = SettingsConfiguration.new
-
-    if block_given?
-      @config = SettingsConfiguration.new.tap do |conf|
-        conf.instance_exec &block
-      end
-    end
+    @config = SettingsConfiguration.new &block
   end
 
   def method_missing(m, *args, &block)
