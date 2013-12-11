@@ -8,7 +8,7 @@ class Settings
   end
 
   def method_missing(m, *args, &block)
-    fail "Only support queries, cannot do <#{m}>" unless args.empty?
+    fail "Only support queries, cannot do command <#{m}>" unless args.empty?
 
     RSettings.new(@config).find m
   end
