@@ -1,6 +1,6 @@
 class RSettings
-  def initialize(config)
-    @settings,@missing,@names = config.settings,config.missing,config.names
+  def initialize(opts={})
+    @settings,@missing,@names = opts[:settings],opts[:missing],opts[:names] 
     
     @settings.on :missing do |e,args|
       @missing.on_missing args.first
