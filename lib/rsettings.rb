@@ -12,7 +12,6 @@ class Settings
 
     RSettings.new(
       :settings => @conf.settings,
-      :missing => @conf.missing,
       :names => @conf.names
     ).find m
   end

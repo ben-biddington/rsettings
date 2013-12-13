@@ -2,7 +2,8 @@ class EnvironmentSettings
   require "audible"; include Audible;
   
   def get(name)
-    ENV[name.to_s].tap{|it| notify_missing(name) if it.nil?}
+    v = ENV[name.value.to_s]
+    Setting.new(v).tap{|it| notify_missing(name) if it.missing?}
   end
 
   private

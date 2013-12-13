@@ -24,7 +24,7 @@ class BasicDiskSettings
   end
 
   def get(name)
-    settings[name].tap{|result| notify_missing name unless result}
+    Setting.new(settings[name.value]).tap{|result| notify_missing name if result.missing?}
   end
 
   def file; @file; end

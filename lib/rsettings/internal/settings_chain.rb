@@ -8,7 +8,7 @@ class SettingsChain
   def get(name)
     @settings.each do |setting|
       result = setting.get(name)
-      return result if result
+      return result unless result.missing?
     end
     
     notify_missing name

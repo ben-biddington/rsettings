@@ -3,33 +3,44 @@ class RSettings
     @settings,@names = opts[:settings],opts[:names] 
   end
 
-# todo: eliminate the need for names lookup -- the thing must know itself what name to use
-
   def find(m)
     query = m.to_s.end_with? "?"
 
     m = m.to_s.delete "?" if query
 
-    setting_name = SettingName.new(@names, m)
+    name = ConvertibleSettingName.new(@names, m)
     
     if query
-      value = Setting.new @settings.get(setting_name.to_s)
-      
-      fail "Unable to convert setting <#{setting_name}> to flag" unless value.truthy?
+      value = @settings.get(name)
+
+      fail "Unable to convert setting <#{name.value}> to flag" unless value.truthy?
       
       return value.to_s.downcase === "yes"
     end
 
-    @settings.get(setting_name.to_s)    
+    @settings.get(name).to_s    
   end
 end
 
 class SettingName
+  attr_reader :value
+
+  def initialize(name)
+    @value = name
+  end
+  
+  def eql?(other)
+    return false if other.nil?
+    other.value eqls self.value
+  end
+end
+
+class ConvertibleSettingName
   def initialize(names, name)
     @name,@names = name,names
   end
   
-  def to_s
+  def value
     @names.for @name
   end
 end

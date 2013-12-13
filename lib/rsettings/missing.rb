@@ -20,6 +20,6 @@ class FailOnMissing
   protected
 
   def on_missing(name)
-    fail "Setting <#{name}> not found"
+    fail "Setting <#{name.value}> not found"
   end
 end
