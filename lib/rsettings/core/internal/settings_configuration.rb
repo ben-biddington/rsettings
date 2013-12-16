@@ -4,7 +4,7 @@ class SettingsConfiguration
   def initialize(&block)
     @missing  = FailOnMissing.new
     @names    = Names.new
-    @defaults = Defaults.new
+    @defaults = Defaults.new @names
     @settings = EnvironmentSettings.new
 
     instance_exec &block if block_given?
@@ -14,7 +14,9 @@ class SettingsConfiguration
     @missing.listen_to @settings
   end
 
-  def let(opts = {}); @names.add opts; end
+  def let(opts = {})
+    @names.add opts
+  end
 
   def default(name, opts = {})
     fail "Expected the :to option so I can tell what the default value is" unless opts[:to]

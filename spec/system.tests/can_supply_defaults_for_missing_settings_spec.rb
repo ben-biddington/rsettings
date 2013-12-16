@@ -18,9 +18,9 @@ describe "default values for missing settings" do
     expect(settings.colour).to eql "gold"
   end
 
-  it "you can default a mapped setting, provided it is mapped to string" do
+  it "you can default a mapped setting" do
     settings = Settings.new do
-      let "C" => "colour"
+      let "C" => :colour
       default :colour, :to => "green"
     end
 

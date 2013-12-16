@@ -4,11 +4,6 @@ class SettingName
   def initialize(name)
     @value = name
   end
-  
-  def eql?(other)
-    return false if other.nil?
-    other.value eqls self.value
-  end
 end
 
 class ConvertibleSettingName
@@ -16,7 +11,5 @@ class ConvertibleSettingName
     @name,@names = name,names
   end
   
-  def value
-    @names.for @name
-  end
+  def value; @names.for @name; end
 end

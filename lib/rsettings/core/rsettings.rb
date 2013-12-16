@@ -1,4 +1,6 @@
 class RSettings
+  require "audible"; include Audible
+
   def initialize(opts={})
     @settings,@names = opts[:settings],opts[:names] 
   end
@@ -17,6 +19,8 @@ class RSettings
       
       return value.to_s.downcase === "yes"
     end
+
+    notify :finding, m, name
 
     @settings.get(name).to_s    
   end
