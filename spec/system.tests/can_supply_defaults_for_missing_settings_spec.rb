@@ -26,4 +26,14 @@ describe "default values for missing settings" do
 
     expect(settings.colour).to eql "green"
   end
+
+  it "is ignored if present elsewhere" do
+    settings = Settings.new do
+      default :colour, :to => "red"
+    end
+
+    ENV["colour"] = "pink"
+
+    expect(settings.colour).to eql "pink"
+  end
 end
