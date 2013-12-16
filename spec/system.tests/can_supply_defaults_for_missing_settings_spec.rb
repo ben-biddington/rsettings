@@ -9,5 +9,12 @@ describe "default values for missing settings" do
     expect(settings.colour).to eql "red"
   end
 
-  it "can you overwrite defaults?"
+  it "can be overwritten -- the last set one wins" do
+    settings = Settings.new do
+      default :colour, :to => "red"
+      default :colour, :to => "gold"
+    end
+
+    expect(settings.colour).to eql "gold"
+  end
 end
