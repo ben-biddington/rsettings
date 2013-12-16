@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rsettings"
-  s.version = "0.3.1"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ben Biddington"]
-  s.date = "2013-12-11"
+  s.date = "2013-12-16"
   s.description = "Settings"
   s.email = "ben.biddington@gmail.com"
   s.extra_rdoc_files = [
@@ -27,16 +27,20 @@ Gem::Specification.new do |s|
     "lib/rsettings.rb",
     "lib/rsettings/adapters/basic_disk_settings.rb",
     "lib/rsettings/adapters/environment_settings.rb",
-    "lib/rsettings/internal/names.rb",
-    "lib/rsettings/internal/rsettings.rb",
-    "lib/rsettings/internal/setting.rb",
-    "lib/rsettings/internal/settings_chain.rb",
-    "lib/rsettings/internal/settings_configuration.rb",
+    "lib/rsettings/core/internal/defaults.rb",
+    "lib/rsettings/core/internal/settings_chain.rb",
+    "lib/rsettings/core/internal/settings_configuration.rb",
+    "lib/rsettings/core/missing.rb",
+    "lib/rsettings/core/names.rb",
+    "lib/rsettings/core/rsettings.rb",
+    "lib/rsettings/core/setting.rb",
+    "lib/rsettings/core/setting_name.rb",
     "rsettings.gemspec",
     "spec/integration.tests/adapters/basic_disk_settings_spec.rb",
     "spec/spec_helper.rb",
     "spec/system.tests/can_fall_back_to_file_settings_spec.rb",
     "spec/system.tests/can_specify_flags_spec.rb",
+    "spec/system.tests/can_supply_defaults_for_missing_settings_spec.rb",
     "spec/system.tests/can_use_env_spec.rb",
     "spec/system.tests/options_spec.rb"
   ]
