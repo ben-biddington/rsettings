@@ -22,6 +22,8 @@ class RSettings
 
     notify :finding, m, name
 
-    @settings.get(name).to_s    
+    result = @settings.get(name)
+
+    result.missing? ? nil : result.to_s
   end
 end

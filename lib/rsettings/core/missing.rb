@@ -1,25 +1,11 @@
 module Missing
-  def listen_to settings
-    settings.on :missing do |e,args|
-      self.on_missing args.first
-    end
+  def get(name) 
+    Setting.new nil
   end
-
-  protected
-
-  def on_missing(name); end
 end
 
-class IgnoreMissing
-  include Missing
-end
+class IgnoreMissing; include Missing; end
 
 class FailOnMissing
-  include Missing
-
-  protected
-
-  def on_missing(name)
-    fail "Setting <#{name.value}> not found"
-  end
+  def get(name); fail "Setting <#{name.value}> not found"; end
 end

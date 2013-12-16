@@ -5,7 +5,7 @@ class Defaults
   
   def get(setting)
     real_name = @names.reverse_for setting
-    defaults[real_name]
+    Setting.new defaults[real_name]
   end
 
   def add(name, value)

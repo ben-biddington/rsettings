@@ -1,8 +1,6 @@
 class SettingsChain
-  require "audible"; include Audible
-
   def initialize(*links)
-    @settings = *links.flatten.map{|klass| klass.new}
+    @settings = *links.flatten
   end
 
   def get(name)
@@ -10,13 +8,7 @@ class SettingsChain
       result = setting.get(name)
       return result unless result.missing?
     end
-    
-    notify_missing name
-  end
 
-  private
-
-  def notify_missing(name)
-    notify :missing, name
+    Setting.new nil
   end
 end 
