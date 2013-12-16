@@ -37,4 +37,16 @@ describe "that you can translate storage names into whatever setting name you wa
     expect(settings_configured_with_nothing.U).to eql "graeme.hay"
     expect(settings_configured_with_nothing.P).to eql "allblacks"
   end
+
+  it "when the setting is not found it tells you the mapped name, not the storage name" do
+    settings = Settings.new do 
+      let "U" => :username
+    end
+
+    ENV.clear
+
+    pending "Needs to translate the setting name when telling you it's missing" do
+      expect{settings.username}.to raise_error /Setting <username> not found/
+    end
+  end
 end
