@@ -8,10 +8,9 @@ class SettingsConfiguration
 
     instance_exec &block if block_given?
 
-    if defaults?
-      @settings = SettingsChain.new(@settings, @defaults, tail)
-    else
-      @settings = SettingsChain.new(@settings, tail)
+    @settings = SettingsChain.new(@settings).tap do |it|
+      it.link @defaults if defaults?
+      it.link tail  
     end
   end
 
