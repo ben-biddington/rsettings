@@ -25,7 +25,7 @@ class SettingsConfiguration
   end
 
   def when_missing(type)
-    @tail = IgnoreMissing.new if type === :ignore 
+    @tail = IgnoreMissing if type === :ignore 
   end
 
   def with_settings(opts={})
@@ -35,7 +35,7 @@ class SettingsConfiguration
   private
 
   def tail
-    @tail || FailOnMissing.new
+    @tail || FailOnMissing
   end
 
   def defaults?; @defaults.any? end

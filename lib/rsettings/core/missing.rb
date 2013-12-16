@@ -4,8 +4,12 @@ module Missing
   end
 end
 
-class IgnoreMissing; include Missing; end
+class IgnoreMissing
+  extend Missing
+end
 
 class FailOnMissing
-  def get(name); fail "Setting <#{name.value}> not found"; end
+  class << self
+    def get(name); fail "Setting <#{name.value}> not found"; end
+  end
 end
