@@ -12,6 +12,14 @@ describe "settings that are either true or false" do
     expect(settings.allowed?).to be_true
     expect(settings.disallowed?).to be_false
   end
+  
+  it "also supports 'on' and 'off'" do
+    ENV["allowed"] = "on"
+    ENV["disallowed"] = "off"
+
+    expect(settings.allowed?).to be_true
+    expect(settings.disallowed?).to be_false
+  end
 
   it "any other value returns setting not found" do
     ENV["allowed"] = "xxx"

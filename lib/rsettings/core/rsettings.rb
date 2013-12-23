@@ -17,7 +17,7 @@ class RSettings
 
       fail "Unable to convert setting <#{name.value}> to flag" unless value.truthy?
       
-      return value.to_s.downcase === "yes"
+      return value.true?
     end
 
     notify :finding, m, name
