@@ -18,4 +18,10 @@ class Names
   def reverse_for(name)
     @opts.invert[name.value] || name.value
   end
+
+  def inspect
+    @opts.map do |k,v|
+      "setting <#{k}> is translated from <#{v}>"
+    end.join "\n"
+  end
 end

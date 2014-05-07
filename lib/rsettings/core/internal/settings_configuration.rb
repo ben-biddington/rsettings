@@ -15,7 +15,7 @@ class SettingsConfiguration
   end
 
   def inspect
-    @defaults.inspect
+    [@defaults.inspect, @names.inspect].join "\n"
   end
 
   def let(opts = {})
