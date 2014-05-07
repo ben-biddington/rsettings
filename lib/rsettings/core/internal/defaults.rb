@@ -14,6 +14,12 @@ class Defaults
 
   def any?; false == defaults.empty? end 
 
+  def inspect
+    defaults.map do |k,v|
+      "setting <#{k}> defaults to <#{v}>"
+    end.join "\n"
+  end
+
   private
 
   def defaults; @defaults ||= {}; end

@@ -7,6 +7,10 @@ class Settings
     @conf = SettingsConfiguration.new &block
   end
 
+  def inspect
+    @conf.inspect
+  end
+
   def method_missing(m, *args, &block)
     fail "Only support queries, cannot do command <#{m}>" unless args.empty?
 

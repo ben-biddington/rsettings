@@ -14,6 +14,10 @@ class SettingsConfiguration
     end
   end
 
+  def inspect
+    @defaults.inspect
+  end
+
   def let(opts = {})
     @names.add opts
   end
