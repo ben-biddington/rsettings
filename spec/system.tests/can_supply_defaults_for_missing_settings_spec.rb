@@ -36,4 +36,12 @@ describe "default values for missing settings" do
 
     expect(settings.colour).to eql "pink"
   end
+
+  it "can default a flag too" do
+    settings = Settings.new do
+      default :loud, :to => "on"
+    end
+
+    expect(settings.loud?).to be_true
+  end
 end

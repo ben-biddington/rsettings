@@ -11,5 +11,5 @@ class ConvertibleSettingName
     @name,@names = name,names
   end
   
-  def value; @names.for @name; end
+  def value; @names.for(@name) || @name; end
 end
