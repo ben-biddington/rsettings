@@ -11,6 +11,7 @@ class Setting
   def to_s; @text.to_s; end
   
   def true?
-    (@text||"").downcase.match /(yes|on)/
+    match = (@text||"").downcase.match(/(yes|on)/)
+    false == match.nil?
   end 
 end

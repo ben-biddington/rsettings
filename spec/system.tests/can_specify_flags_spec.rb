@@ -36,4 +36,10 @@ describe "settings that are either true or false" do
 
     expect(settings.verbose?).to be_true
   end
+
+  it "flag is boolean" do
+    ENV["allowed"] = "yes"
+
+    expect(settings.allowed?).to be_a TrueClass
+  end
 end
