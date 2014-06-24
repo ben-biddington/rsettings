@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rsettings"
-  s.version = "0.7.0"
+  s.version = "0.7.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ben Biddington"]
-  s.date = "2014-06-18"
+  s.date = "2014-06-24"
   s.description = "Settings"
   s.email = "ben.biddington@gmail.com"
   s.extra_rdoc_files = [
