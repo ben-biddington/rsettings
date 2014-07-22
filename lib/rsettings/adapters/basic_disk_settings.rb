@@ -36,7 +36,7 @@ class BasicDiskSettings
   def all
     return {} unless exists?
 
-    YAML.load(IO.read(file))
+    YAML.load(IO.read(file)) || {}
   end
 
   def notify_missing(name)

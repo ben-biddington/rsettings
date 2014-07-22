@@ -4,7 +4,7 @@ describe BasicDiskSettings do
   let(:settings) {BasicDiskSettings.new}
 
   before do
-    settings.clear
+    #settings.clear
   end
 
   let(:a) { SettingName.new :a}
@@ -42,5 +42,13 @@ describe BasicDiskSettings do
 
     expect(settings.get(a).to_s).to_not be_nil
     expect(settings.get(b).to_s).to_not be_nil
+  end
+
+  it "can add a setting when empty" do
+    settings = BasicDiskSettings.new
+    
+    settings.set :a => " a value added to an epty settings list"
+    
+    expect(settings.get(a).to_s).to_not be_nil
   end
 end
